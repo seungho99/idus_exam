@@ -1,6 +1,6 @@
 package com.example.project1.utils;
 
-import com.example.project1.model.User;
+import com.example.project1.user.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -23,7 +23,7 @@ public class JwtUtil {
             return User.builder()
                     .idx(claims.get("userIdx", Long.class))
                     .name(claims.get("userName", String.class))
-                    .phone(claims.get("userPhone", Long.class))
+                    .phone(claims.get("userPhone", String.class))
                     .email(claims.get("userEmail", String.class))
                     .role(claims.get("userRole", String.class))
                     .build();

@@ -1,6 +1,6 @@
 package com.example.project1.emailVerify.model;
 
-import com.example.project1.model.User;
+import com.example.project1.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

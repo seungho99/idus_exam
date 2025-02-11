@@ -1,8 +1,8 @@
-package com.example.project1;
+package com.example.project1.user;
 
 import com.example.project1.emailVerify.EmailVerifyService;
-import com.example.project1.model.User;
-import com.example.project1.model.UserDto;
+import com.example.project1.user.model.User;
+import com.example.project1.user.model.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

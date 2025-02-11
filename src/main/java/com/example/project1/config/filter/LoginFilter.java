@@ -2,8 +2,8 @@ package com.example.project1.config.filter;
 
 
 import com.example.project1.utils.JwtUtil;
-import com.example.project1.model.User;
-import com.example.project1.model.UserDto;
+import com.example.project1.user.model.User;
+import com.example.project1.user.model.UserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -33,7 +33,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         UsernamePasswordAuthenticationToken authToken;
         // 그림에서 1번 로직
 //        MemberDto.SignupRequest MemberDto =
-//                new MemberDto.SignupRequest(request.getParameter("Membername"), request.getParameter("password"));
+//                new MemberDto.SignupRequest(request.getParameter("Username"), request.getParameter("password"));
         try {
             // 그림에서 원래 1번이었던 로직을 JSON 형태의 데이터를 처리하도록 변경
             UserDto.SignupRequest UserDto  = new ObjectMapper().readValue(request.getInputStream(), UserDto.SignupRequest.class);
@@ -50,13 +50,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         return authenticationManager.authenticate(authToken);
     }
 
-    
     // 그림에서 9번 로직
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal();
-        String jwtToken = JwtUtil.generateToken(user.getIdx(), user.getName(), user.getEmail());
-
+        String jwtToken = JwtUtil.generateToken(user.getIdx(), user.getName(), user.getEmail(), user.getPhone(), user.getRole());
         
 //        일반적인 객체 생성 및 객체의 변수에 값을 설정하는 방법
 //        ResponseCookie cookie = new ResponseCookie();

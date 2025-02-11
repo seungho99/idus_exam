@@ -1,6 +1,6 @@
 package com.example.project1.config.filter;
 
-import com.example.project1.model.User;
+import com.example.project1.user.model.User;
 import com.example.project1.utils.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

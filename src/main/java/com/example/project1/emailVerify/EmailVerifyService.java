@@ -2,7 +2,7 @@ package com.example.project1.emailVerify;
 
 
 import com.example.project1.emailVerify.model.EmailVerify;
-import com.example.project1.model.User;
+import com.example.project1.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -21,7 +21,7 @@ public class EmailVerifyService {
         message.setTo(email);
         message.setSubject("[환영] 굿");
         message.setText(
-                "http://localhost:8080/member/verify?uuid=" + uuid
+                "http://localhost:8080/user/verify?uuid=" + uuid
         );
 
         mailSender.send(message);

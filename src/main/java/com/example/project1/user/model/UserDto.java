@@ -1,14 +1,15 @@
-package com.example.project1.model;
+package com.example.project1.user.model;
 
 import lombok.Getter;
 
 public class UserDto {
 
     @Getter
-    public class SignupRequest {
+    public static class SignupRequest {
         private String email;
         private String password;
         private String name;
+        private String phone;
 
         public User toEntity(String encodedPassword, String type) {
             if (type.equals("USER")) {
@@ -16,6 +17,7 @@ public class UserDto {
                         .email(email)
                         .password(encodedPassword)
                         .name(name)
+                        .phone(phone)
                         .role("USER")
                         .build();
             } else {
@@ -23,6 +25,7 @@ public class UserDto {
                         .email(email)
                         .password(encodedPassword)
                         .name(name)
+                        .phone(phone)
                         .role("INSTRUCTOR")
                         .build();
             }

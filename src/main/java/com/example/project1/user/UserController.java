@@ -1,6 +1,6 @@
-package com.example.project1;
+package com.example.project1.user;
 
-import com.example.project1.model.UserDto;
+import com.example.project1.user.model.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
