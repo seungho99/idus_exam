@@ -30,19 +30,6 @@ public class UserService implements UserDetailsService {
 
     }
 
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> result = userRepository.findByEmail(username);
-
-        if (result.isPresent()) {
-            // 7번 로직
-            User user = result.get();
-            return user;
-        }
-
-        return null;
-    }
 
     @Transactional
     public void verify(String uuid) {
@@ -53,4 +40,21 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    @Transactional(readOnly = true)
+    public UserDto.UserResponse read(Long idx) {
+        Optional<User> result = userRepository.findById(idx);
+
+        if(result.isPresent()) {
+            User user = result.get();
+
+            return UserDto.UserResponse.from(user);
+        }
+
+        return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
 }
